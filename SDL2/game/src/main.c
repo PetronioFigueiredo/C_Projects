@@ -2,19 +2,15 @@
 #include <stdlib.h>
 #include <SDL2/SDL.h>
 #include "constants.h"
+#include "ball.h"
 
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 int game_is_running = FALSE;
+int color = 12;
 
 int last_frame_time = 0;
-
-struct ball {
-    float x;
-    float y;
-    float width;
-    float height;
-}ball;
+Ball ball;
 
 int initialize_window(void)
 {
@@ -85,6 +81,7 @@ void update()
 
     last_frame_time = SDL_GetTicks();
 
+    color_looper(&color);
     ball.x += 70 * delta_time;
     ball.y += 50 * delta_time;
 }
@@ -104,7 +101,7 @@ void render()
         (int)ball.height
     };
 
-    SDL_SetRenderDrawColor(renderer, 255,255,255,255);
+    SDL_SetRenderDrawColor(renderer,color,color,color, 255);
 
     SDL_RenderFillRect(renderer, &ball_rect);
     SDL_RenderPresent(renderer);
