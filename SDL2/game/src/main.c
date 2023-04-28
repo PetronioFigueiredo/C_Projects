@@ -83,7 +83,7 @@ void update()
 
     //color_looper(&color);
     ball_behavior(&ball);
-    printf("BALL x position %f, BALL y posiotn %f\n", ball.x,ball.y);
+    printf("BALL x position %d, BALL y posiotn %d\n", (int)ball.x,(int)ball.y);
     system("clear");
     //ball.x += 70 *  24;
     //ball.y += 50 * 24;
