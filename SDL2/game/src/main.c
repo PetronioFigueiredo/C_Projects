@@ -7,7 +7,7 @@
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 int game_is_running = FALSE;
-int color = 12;
+int color = 235;
 
 int last_frame_time = 0;
 Ball ball;
@@ -67,6 +67,7 @@ void process_input()
 
 void update()
 {
+    /* 
     // Calculate how muich we have to wair until we reach the target frame time
     int time_to_wait = FRAME_TERGET_TIME - (SDL_GetTicks() - last_frame_time);
 
@@ -75,15 +76,17 @@ void update()
     {
         SDL_Delay(time_to_wait);
     }
+    */
     
     // Get a delta time factor converted to seconds to be used to update my objects 
-    float delta_time = (SDL_GetTicks() - last_frame_time) / 1000.0f;
+    //last_frame_time = SDL_GetTicks();
 
-    last_frame_time = SDL_GetTicks();
-
-    color_looper(&color);
-    ball.x += 70 * delta_time;
-    ball.y += 50 * delta_time;
+    //color_looper(&color);
+    ball_behavior(&ball);
+    printf("BALL x position %f, BALL y posiotn %f\n", ball.x,ball.y);
+    system("clear");
+    //ball.x += 70 *  24;
+    //ball.y += 50 * 24;
 }
 
 
@@ -92,11 +95,10 @@ void render()
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
     
-    //TODO: 
     // Draw a rectangle
     SDL_Rect ball_rect = {
-        (int)ball.x,
         (int)ball.y,
+        (int)ball.x,
         (int)ball.width,
         (int)ball.height
     };
@@ -109,8 +111,8 @@ void render()
 
 void setup()
 {
-    ball.x = 20;
-    ball.y = 20;
+    ball.x = 0;
+    ball.y = 0;
     ball.width = 15;
     ball.height = 15;
 }
