@@ -149,6 +149,23 @@ void render()
 
     SDL_RenderPresent(renderer);
 
+    if (SDL_HasIntersection(&ball_rect, &paddle1_rect))
+    {
+        ball.going_right = TRUE;
+        ball.ball_R = 0;
+        ball.ball_G = 0;
+        ball.ball_B = 255;
+
+    }
+    else if (SDL_HasIntersection(&ball_rect, &paddle2_rect))
+    {
+        ball.going_right = FALSE;
+        ball.ball_R = 255;
+        ball.ball_G = 0;
+        ball.ball_B = 0;
+
+    }
+
     //SDL_RenderFillRect(renderer, &paddle2_rect);
 }
 
