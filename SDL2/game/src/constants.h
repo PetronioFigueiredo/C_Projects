@@ -13,4 +13,6 @@
 #define COLLOR_CHANGER 128
 
 #define BALL_VELOCITY 9
+
+#define PADDLE_VELOCITY 30
 #endif
